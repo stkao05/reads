@@ -167,7 +167,7 @@ function loadPopup() {
 
       this.elm = tmpl.cloneNode(true) as HTMLAnchorElement;
       this.elm.classList.remove("hidden");
-      this.elm.href = `/${store.id}`;
+      this.elm.href = `/s/${store.id}`;
 
       const img = this.elm.querySelector(
         "[data-field=img]"
