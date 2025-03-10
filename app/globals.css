@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+:root,
+.map-popup {
+  font-size: 14.5px;
+  line-height: 1.8rem;
+  @apply text-zinc-800;
+}
+
+.link {
+  @apply text-zinc-400 hover:text-zinc-800 transition;
+}
+
+.link-button {
+  @apply rounded transition-all py-1 px-2 text-zinc-400 text-sm hover:text-zinc-900 hover:bg-zinc-100;
+}
+
+.link-button:active,
+.link-button.active {
+  @apply text-zinc-900 bg-zinc-200;
+}
+
+p {
+  @apply mb-2;
+}
+
+body {
+  font-family: "SF Pro TC", "SF Pro Text", "SF Pro Icons", "PingFang TC",
+    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.photo-filter {
+  filter: contrast(70%) brightness(120%);
+}
+
+.details-reset > summary {
+  list-style: none;
+}
+.details-reset > summary::before {
+  display: none;
+}
+.details-reset > summary::-webkit-details-marker {
+  display: none;
+}
+
+.marker-content {
+  @apply text-zinc-700 py-2 px-2 border  border-zinc-700 bg-white rounded-2xl shadow transition font-semibold tracking-widest cursor-pointer;
+}
+
+.marker:hover,
+.marker.hover,
+.marker.active {
+  z-index: 1000;
+}
+
+.marker:hover .marker-content,
+.marker.hover .marker-content,
+.marker.active .marker-content {
+  @apply bg-zinc-800 text-white scale-[115%];
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.md a {
+  @apply text-zinc-400 hover:text-zinc-800 transition;
+}
+
+.md h1,
+.md h2,
+.md h3,
+.md h4 {
+  @apply font-medium mb-1 mt-2;
+}
+
+.md ul {
+  list-style: circle;
+}
+
+.md p {
+  @apply mb-1 mt-2;
+}
+
+.md img {
+  @apply my-2;
+}
+
+.markdown-editor textarea {
+  height: 50vh;
+}

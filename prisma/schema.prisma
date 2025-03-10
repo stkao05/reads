@@ -1,0 +1,81 @@
+datasource db {
+  provider     = "postgresql"
+  url          = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl    = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  relationMode = "foreignKeys"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  email        String @id
+  name         String
+  password_hash String
+}
+
+model Store {
+  id                   String       @id
+  path                 String       @unique
+  created_at           DateTime     @default(now())
+  updated_at           DateTime     @default(now())
+  name                 String
+  address              String
+  summary              String?
+  img_url              String?
+  img_width            Int?
+  img_height           Int?
+  region               String?
+  hours                String?
+  phone                String?
+  facebook             String?
+  instagram            String?
+  googlemap            String?
+  website              String?
+  business_status      String?
+  google_place_id      String?
+  google_place_info    Json?
+  google_updated_at    DateTime?
+  hidden               Boolean      @default(false)
+  closed               Boolean      @default(false)
+  content              String?      @db.Text
+  content_show         Boolean      @default(false)
+  content_ref          String?      @db.Text
+  content_ref_url      String?      @db.Text
+  content_domain       String?
+  content_author_email String?
+  coord_lat            Float?
+  coord_lng            Float?
+  tags                 StoreTag[]
+  images               StoreImage[]
+
+  @@index([path])
+}
+
+model Tag {
+  id       String     @id
+  name     String
+  StoreTag StoreTag[]
+}
+
+model StoreTag {
+  store_id String
+  tag_id   String
+
+  store Store @relation(fields: [store_id], references: [id])
+  tag   Tag   @relation(fields: [tag_id], references: [id])
+
+  @@id([store_id, tag_id])
+}
+
+model StoreImage {
+  key      String @id
+  store_id String
+  width    Int
+  height   Int
+  order    Int
+  Store    Store  @relation(fields: [store_id], references: [id])
+
+  @@index([store_id, order])
+}
